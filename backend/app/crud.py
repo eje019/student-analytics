@@ -16,3 +16,16 @@ def create_user(db: Session, name: str):
 
     return db_user
 
+
+
+def read_user(db: Session, user_id:int):
+    #recupere un user pas son id
+
+    return db.query(models.User).filter(models.User.id == user_id).first()
+
+def get_users(db: Session, skip: int = 0, limit: int = 100):
+    #recupere la liste des utilisateurs
+    #list = combien dutilisateurs on vas sauter pour la pagination 
+    #limit = combien dutilisateurs maximum
+
+    retun db.query(models.User).offset(skip).limit(limit).all()

@@ -1,11 +1,16 @@
 from fastapi import FastAPI
 from .database import engine
 from . import models
+from .routers import users
+
 
 # Crée les tables dans PostgreSQL
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Student Analytics API")
+
+app.include_router(users.router)
+
 
 @app.get("/")
 def root():

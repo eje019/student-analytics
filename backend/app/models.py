@@ -10,8 +10,9 @@ class User(Base):
     hashed_password = Column(String)
 
 
-# class User(Base):
-#     __tablename__= "test"
+class Subject(Base):
+    __tablename__= "subjects"
 
-#     id = Column(Integer, primary_key=True, index=True)
-#     name = Column(String, unique=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    user_id = Column(Integer, index=True)

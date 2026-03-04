@@ -37,3 +37,4 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
     if db_user is None:
         raise HTTPException(status_code=404, detail="Utilisateur non trouvé")
     return db_user
+

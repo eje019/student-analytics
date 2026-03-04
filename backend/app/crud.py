@@ -28,4 +28,4 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
     #list = combien dutilisateurs on vas sauter pour la pagination 
     #limit = combien dutilisateurs maximum
 
-    retun db.query(models.User).offset(skip).limit(limit).all()
+    return db.query(models.User).offset(skip).limit(limit).all()

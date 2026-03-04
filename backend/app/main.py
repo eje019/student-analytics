@@ -1,11 +1,16 @@
 from fastapi import FastAPI
+from .database import engine
+from . import models
+
+# Crée les tables dans PostgreSQL
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Student Analytics API")
 
 @app.get("/")
 def root():
-    return {"message": "C'est maginifique"}
+    return {"message": "API Student Analytics"}
 
 @app.get("/test")
 def test():
-    return{"message": "on est sur la page test"}
+    return {"resultat": "Ceci est un test"}

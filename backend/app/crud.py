@@ -18,7 +18,7 @@ def create_user(db: Session, name: str):
 
 
 
-def read_user(db: Session, user_id:int):
+def get_user(db: Session, user_id:int):
     #recupere un user pas son id
 
     return db.query(models.User).filter(models.User.id == user_id).first()

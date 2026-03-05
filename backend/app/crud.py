@@ -32,6 +32,7 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_subject(db: Session, user_id:int, name:str):
+    # on cree ici une nouvele matiere 
     db_subject = models.Subject(name = name, user_id=user_id)
 
     db.add(db_subject)
@@ -41,8 +42,6 @@ def create_subject(db: Session, user_id:int, name:str):
     db.refresh(db_subject)
 
     return db_subject
-
-
 
 def get_subject(db: Session, subject_id: int):
     """une matière par son id"""
@@ -55,5 +54,5 @@ def get_subject_by_user(db: Session, user_id:int):
 
 
 def get_subjects(db: Session, skip: int = 0, limit: int = 100):
-    """toutes les matières"""
+    """toutes les matières avec pagination (limite)"""
     return db.query(models.Subject).offset(skip).limit(limit).all()
